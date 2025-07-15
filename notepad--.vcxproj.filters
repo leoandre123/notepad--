@@ -36,6 +36,63 @@
     <ClInclude Include="LineTextDocument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SyntaxHighlighter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NotepadApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TabContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TabControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonToolItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThemeManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SeparatorToolItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ToggleButtonToolItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PopupMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,6 +107,60 @@
     <ClCompile Include="LineTextDocument.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="String.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SyntaxHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NotepadApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntryPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TabControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonToolItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ThemeManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SeparatorToolItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ToggleButtonToolItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PopupMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="notepad--.rc">
@@ -61,6 +172,87 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="notepad--.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\Users\leoau\Downloads\floppy-disk (1).ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\Users\leoau\Downloads\add-document.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\add-document.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\floppy-disk.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\copy.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\redo.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\undo.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\outline_clipboard.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\outline_copy.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\outline_clipboard.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\outline_copy.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\new-document.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clipboard.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\save.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\window-close.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\window-maximize.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\window-minimize.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\window-unmaximize.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\window-close.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\window-maximize.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\window-minimize.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\window-unmaximize.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\appicon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\app-icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\notepad.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

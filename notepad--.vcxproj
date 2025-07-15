@@ -131,25 +131,89 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonToolItem.h" />
+    <ClInclude Include="ColorString.h" />
+    <ClInclude Include="EditorWindow.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="ITextDocument.h" />
     <ClInclude Include="LineTextDocument.h" />
+    <ClInclude Include="MainWindow.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="notepad--.h" />
+    <ClInclude Include="NotepadApp.h" />
+    <ClInclude Include="PopupMenu.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SeparatorToolItem.h" />
+    <ClInclude Include="String.h" />
+    <ClInclude Include="SyntaxHighlighter.h" />
+    <ClInclude Include="TabContext.h" />
+    <ClInclude Include="TabControl.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TextDocument.h" />
+    <ClInclude Include="ThemeManager.h" />
+    <ClInclude Include="TitleBar.h" />
+    <ClInclude Include="ToggleButtonToolItem.h" />
+    <ClInclude Include="ToolBar.h" />
+    <ClInclude Include="ToolItem.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonToolItem.cpp" />
+    <ClCompile Include="ColorString.cpp" />
+    <ClCompile Include="EditorWindow.cpp" />
+    <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="LineTextDocument.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainWindow.cpp" />
+    <ClCompile Include="Math.cpp" />
+    <ClCompile Include="NotepadApp.cpp" />
+    <ClCompile Include="PopupMenu.cpp" />
+    <ClCompile Include="SeparatorToolItem.cpp" />
+    <ClCompile Include="String.cpp" />
+    <ClCompile Include="SyntaxHighlighter.cpp" />
+    <ClCompile Include="TabControl.cpp" />
     <ClCompile Include="TextDocument.cpp" />
+    <ClCompile Include="ThemeManager.cpp" />
+    <ClCompile Include="TitleBar.cpp" />
+    <ClCompile Include="ToggleButtonToolItem.cpp" />
+    <ClCompile Include="ToolBar.cpp" />
+    <ClCompile Include="ToolItem.cpp" />
+    <ClCompile Include="Utility.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="notepad--.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\Users\leoau\Downloads\add-document.ico" />
+    <Image Include="..\..\Users\leoau\Downloads\floppy-disk (1).ico" />
+    <Image Include="icon1.ico" />
     <Image Include="notepad--.ico" />
+    <Image Include="Resources\add-document.ico" />
+    <Image Include="resources\app-icon.ico" />
+    <Image Include="resources\appicon.ico" />
+    <Image Include="Resources\clipboard.ico" />
+    <Image Include="Resources\copy.ico" />
+    <Image Include="Resources\floppy-disk.ico" />
+    <Image Include="resources\icon1.ico" />
+    <Image Include="Resources\new-document.ico" />
+    <Image Include="Resources\notepad.ico" />
+    <Image Include="Resources\outline_clipboard.ico" />
+    <Image Include="Resources\outline_clipboard.png" />
+    <Image Include="Resources\outline_copy.ico" />
+    <Image Include="Resources\outline_copy.png" />
+    <Image Include="Resources\redo.ico" />
+    <Image Include="Resources\save.ico" />
+    <Image Include="Resources\undo.ico" />
+    <Image Include="Resources\window-close.ico" />
+    <Image Include="Resources\window-close.png" />
+    <Image Include="Resources\window-maximize.ico" />
+    <Image Include="Resources\window-maximize.png" />
+    <Image Include="Resources\window-minimize.ico" />
+    <Image Include="Resources\window-minimize.png" />
+    <Image Include="Resources\window-unmaximize.ico" />
+    <Image Include="Resources\window-unmaximize.png" />
     <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
