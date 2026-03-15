@@ -50,6 +50,8 @@ public:
 
 	void Undo() override;
 	void Redo() override;
+
+    DocumentType GetDocumentType();
 private:
 	std::vector<String> SplitIntoLines(const String& text) const;
 

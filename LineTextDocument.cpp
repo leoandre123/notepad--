@@ -403,3 +403,7 @@ void LineTextDocument::UpdateCursorFromCoordinates()
 {
 	m_CursorBytePosition = CalculateCursorPosition(m_CursorColumn, m_CursorRow);
 }
+
+DocumentType LineTextDocument::GetDocumentType() {
+    return {};
+}

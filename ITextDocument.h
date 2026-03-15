@@ -5,6 +5,10 @@
 
 enum CursorDirection { NORTH, EAST, SOUTH, WEST };
 
+struct DocumentType {
+	std::string name;
+};
+
 class ITextDocument
 {
 public:
@@ -41,5 +45,7 @@ public:
 
 	virtual void Undo() = 0;
 	virtual void Redo() = 0;
+
+	virtual DocumentType GetDocumentType() = 0;
 };
 

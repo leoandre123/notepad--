@@ -316,11 +316,10 @@ void EditorWindow::OnMouseMove(int x, int y)
 void EditorWindow::DrawString(HDC hdc, int x, int y, String str, int cursorPos,
 	int selectionStart, int selectionEnd)
 {
-	//std::vector<StringColorInfo> highlightingInfo = highlighter.HighlightLine(str);
+	std::vector<SyntaxHighlighter::StringColorInfo> highlightingInfo = SyntaxHighlighter::HighlightLine(str, m_ActiveTabContext->document->GetDocumentType());
 
 	const Theme& theme = ThemeManager::Instance().GetTheme();
-
-
+	
 	if (selectionStart != -1) {
 		std::cout << selectionStart << " - " << selectionEnd << "\n";
 
@@ -360,6 +359,12 @@ void EditorWindow::DrawString(HDC hdc, int x, int y, String str, int cursorPos,
 		SetTextColor(hdc, theme.editorTextColor);
 		const std::wstring& expandedStr = str.ToWStringWithExpandedTabs();
 		TextOutW(hdc, x, y, expandedStr.c_str(), (int)expandedStr.size());
+		
+		for (auto& colorString : highlightingInfo) {
+			auto sub = str.Substring(colorString.start, colorString.length);
+			TextOutW(hdc, x, y, expandedStr.c_str(), (int)expandedStr.size());
+		}
+
 	}
 
 
@@ -378,7 +383,6 @@ void EditorWindow::DrawString(HDC hdc, int x, int y, String str, int cursorPos,
 	}
 
 }
-
 
 
 void EditorWindow::ScrollToCursor() {

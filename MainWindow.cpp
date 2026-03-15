@@ -349,6 +349,18 @@ LRESULT MainWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam)
 	}
 	case WM_SIZE: {
 		SendMessage(m_StatusBarHandle, WM_SIZE, wParam, lParam);
+
+		if (wParam == SIZE_MAXIMIZED)
+		{
+			DWORD attr = DWM_WINDOW_CORNER_PREFERENCE::DWMWCP_DONOTROUND;
+			DwmSetWindowAttribute(m_WindowHandle, DWMWA_WINDOW_CORNER_PREFERENCE, &attr, sizeof(attr));
+		}
+		else if (wParam == SIZE_RESTORED)
+		{
+			DWORD attr = DWM_WINDOW_CORNER_PREFERENCE::DWMWCP_ROUND;
+			DwmSetWindowAttribute(m_WindowHandle, DWMWA_WINDOW_CORNER_PREFERENCE, &attr, sizeof(attr));
+		}
+
 		int width = LOWORD(lParam);
 		int height = HIWORD(lParam);
 		return OnResize(width, height);

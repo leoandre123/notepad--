@@ -37,12 +37,10 @@ private:
 private:
 	HWND m_WindowHandle;
 
-	//ITextDocument* m_ActiveDocument;
-	//int m_LineOffset;
-
 	TabContext* m_ActiveTabContext;
 
 	int m_VisibleLineCount;
 	bool m_IsSelecting;
+
 };
 

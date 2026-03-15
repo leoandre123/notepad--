@@ -2,40 +2,34 @@
 #include <vector>
 #include "String.h"
 #include <unordered_set>
+#include <regex>
+#include "ITextDocument.h"
 
-enum HighlightTokenCategory {
-	Identifier,
-	Keyword,
-	Seperator,
-	Operator,
+namespace SyntaxHighlighter {
 
-	BooleanLiteral,
-	NumberLiteral,
-	StringLiteral,
+	struct StringColorInfo {
+		int start;
+		int length;
+		COLORREF color;
 
-	Comment,
-};
-struct StringColorInfo {
-	HighlightTokenCategory category;
-	int start;
-	int length;
-	//COLORREF color;
-};
-struct Token {
-	HighlightTokenCategory category;
-	std::string value;
-};
+        StringColorInfo(int s, int l, COLORREF c) : start(s), length(l), color(c) {}
+	};
 
-class SyntaxHighlighter
-{
-public:
-	std::vector<StringColorInfo> HighlightLine(const String& line);
+	enum RuleType {
+		Comment,
+		Keyword,
+		Operator,
+		StringLiteral
+	};
 
-	COLORREF GetColor(HighlightTokenCategory category);
+	struct SyntaxRule {
+		std::regex regex;
+		RuleType ruleType;
+	};
 
-private:
+	std::vector<StringColorInfo> HighlightLine(const String& line, DocumentType type);
+	std::vector<SyntaxRule> GetRules(const DocumentType& type);
+}
 
-private:
-	std::unordered_set<std::string> m_Keywords;
-};
+
 

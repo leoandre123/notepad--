@@ -1,87 +1,76 @@
 #include "SyntaxHighlighter.h"
+#include <regex>
+#include <iostream>
+#include <Windows.h>
 
-std::vector<StringColorInfo> SyntaxHighlighter::HighlightLine(const String& line)
+
+using namespace SyntaxHighlighter;
+
+std::vector<StringColorInfo> SyntaxHighlighter::HighlightLine(const String& line, DocumentType type)
 {
-    std::vector<StringColorInfo> colorInfo;
-    int length = line.GetByteCount();
-    for (int i = 0; i < length;) {
-        char c = line.ByteAt(i);
-        char next = i + 1 < length ? line.ByteAt(i + 1) : ';';
 
-        if (isspace(c)) {
-            i++;
-        }
-        else if (isalpha(c) || c == '_') {
+	std::vector<StringColorInfo> colorInfo;
+	std::vector<SyntaxRule> rules = GetRules(type);
+	std::string str = line.ToString();
+	std::string::const_iterator searchStart(str.cbegin());
 
-            int start = i;
-            while (i < length && (isalnum(line.ByteAt(i)) || line.ByteAt(i) == '_')) i++;
 
-            std::string word = line.Substring(start, i - start).ToString();
+	int pos = 0;
+	while (pos < (int)str.length()) {
 
-            HighlightTokenCategory cat = m_Keywords.count(word) ?
-                HighlightTokenCategory::Keyword
-                : HighlightTokenCategory::Identifier;
+		std::smatch match;
+		std::string sub = str.substr(pos);
 
-            colorInfo.push_back({ cat, start, i - start });
-        }
-        else if (isdigit(c)) {
-            int start = i;
-            while (i < length && (isdigit(line.ByteAt(i)) || line.ByteAt(i) == '.'
-                || line.ByteAt(i) == 'f'
-                )) i++;
-            //std::string word = line.Substring(start, i - start).ToString();
 
-            colorInfo.push_back({ HighlightTokenCategory::NumberLiteral, start, i - start });
-        }
-        else if (c == '"') {
-            int start = i;
-            while (i < length && line.ByteAt(i) != '"') i++;
-            std::string word = line.Substring(start, i - start).ToString();
+		RuleType bestType = (RuleType)-1;
+		for (auto& rule : rules) {
 
-            colorInfo.push_back({ HighlightTokenCategory::StringLiteral, start, i - start });
-        }
-        else if (c == '\'') {
-            int start = i;
-            while (i < length && line.ByteAt(i) != '\'') i++;
-            std::string word = line.Substring(start, i - start).ToString();
+			if (std::regex_search(sub, match, rule.regex) && match.position() == 0) {
+				bestType = rule.ruleType;
+				break;
+			}
+		}
 
-            colorInfo.push_back({ HighlightTokenCategory::StringLiteral, start, i - start });
-        }
-        else if (c == '/' && (next == '/' || next == '*')) {
-            int start = i;
+		if (bestType != -1) {
+			std::cout << "[" << match.str() << "]";
+			colorInfo.emplace_back(pos, match.length(), RGB(255, 255, 0));
+			pos += match.length();
+		}
+		else {
+			colorInfo.emplace_back(pos, 1, RGB(255, 255, 255));
+			std::cout << str[pos];
+			pos += 1;
+		}
 
-            if (next == '/') {
-                while (i < length && line.ByteAt(i) != '\n') i++;
-                std::string word = line.Substring(start, i - start).ToString();
 
-                colorInfo.push_back({ HighlightTokenCategory::Comment, start, i - start });
-            }
-            else {
-                while (i + 1 < length && line.ByteAt(i) != '*' && line.ByteAt(i + 1) == '/') i++;
-                std::string word = line.Substring(start, i - start).ToString();
+	}
 
-                colorInfo.push_back({ HighlightTokenCategory::Comment, start, i - start });
-            }
-        }
-        else {
-            int start = i++;
-            colorInfo.push_back({ HighlightTokenCategory::Comment, start, 1});
-        }
-    }
-
-    return colorInfo;
+	return colorInfo;
 }
 
-COLORREF SyntaxHighlighter::GetColor(HighlightTokenCategory category)
+std::vector<SyntaxRule> SyntaxHighlighter::GetRules(const DocumentType& type)
 {
-    switch (category) {
-        case HighlightTokenCategory::Identifier     : return RGB(128,128,255);
-        case HighlightTokenCategory::Keyword        : return RGB(0,0,255);
-        case HighlightTokenCategory::Seperator      : return RGB(64,64,64);
-        case HighlightTokenCategory::Operator       : return RGB(64,64,64);
-        case HighlightTokenCategory::BooleanLiteral : return RGB(0,0,255);
-        case HighlightTokenCategory::NumberLiteral  : return RGB(128,255,128);
-        case HighlightTokenCategory::StringLiteral  : return RGB(255,127,0);
-        case HighlightTokenCategory::Comment        : return RGB(0,255,0);
-    }
+	if (type.name == "C++") {
+		return {
+			{std::regex(R"(/\/\*[^*]*\*+([^\/][^*]*\*+)*\//g)"), RuleType::Comment},
+			{std::regex(R"(/\/\/[^\n\r]+(?:[\n\r]|\*\))/g)"), RuleType::Comment},
+			{std::regex(R"(/alignas|alignof|and|and_eq|asm|auto|bitand|bitor|bool|break|case|catch|char|char8_t|char16_t|char32_t|class|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|co_await|co_return|co_yield|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|false|float|for|friend|goto|if|inline|int|long|mutable|namespace|new|noexcept|not|not_eq|nullptr|operator|or|or_eq|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|true|try|typedef|typeid|typename|union|unsigned|using declaration|using directive|virtual|void|volatile|wchar_t|while|xor|xor_eq/g)"), RuleType::Keyword},
+		};
+	}
+
+	return {};
 }
+
+//COLORREF SyntaxHighlighter::GetColor(HighlightTokenCategory category)
+//{
+//    switch (category) {
+//        case HighlightTokenCategory::Identifier     : return RGB(128,128,255);
+//        case HighlightTokenCategory::Keyword        : return RGB(0,0,255);
+//        case HighlightTokenCategory::Seperator      : return RGB(64,64,64);
+//        case HighlightTokenCategory::Operator       : return RGB(64,64,64);
+//        case HighlightTokenCategory::BooleanLiteral : return RGB(0,0,255);
+//        case HighlightTokenCategory::NumberLiteral  : return RGB(128,255,128);
+//        case HighlightTokenCategory::StringLiteral  : return RGB(255,127,0);
+//        case HighlightTokenCategory::Comment        : return RGB(0,255,0);
+//    }
+//}

@@ -5,6 +5,7 @@ HINSTANCE g_hInstance;
 HWND g_HandleMainWindow;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow) {
+
 	SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
 	
 	g_hInstance = hInstance;
@@ -13,3 +14,4 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow) {
 	app.Run();
 	return 0;
 }
+
